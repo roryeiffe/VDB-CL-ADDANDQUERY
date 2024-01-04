@@ -1,10 +1,8 @@
-import os
 import unittest
-from main.lab import sample
-from main.lab import add_file
-from main.lab import get_relevant_file
-from main.lab import chroma_client
-from main.lab import collection
+from src.main.lab import sample
+from src.main.lab import add_file
+from src.main.lab import chroma_client
+from src.main.lab import collection
 
 
 class ChromaTests(unittest.TestCase):
