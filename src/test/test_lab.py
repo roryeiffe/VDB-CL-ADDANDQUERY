@@ -3,6 +3,7 @@ from src.main.lab import sample
 from src.main.lab import add_file
 from src.main.lab import chroma_client
 from src.main.lab import collection
+from src.main.lab import get_relevant_file
 
 
 class ChromaTests(unittest.TestCase):
@@ -34,7 +35,7 @@ class ChromaTests(unittest.TestCase):
     """
 
     def test_add_file(self):
-        add_file("../resources/checkers.md", {"type": "sport"}, "checkers")
+        add_file("src/resources/checkers.md", {"type": "sport"}, "checkers")
         result = collection.get(
             ids="checkers"
         )
@@ -56,16 +57,24 @@ class ChromaTests(unittest.TestCase):
     """
 
     def test_add_and_query_files(self):
-        add_file("../resources/checkers.md", {"type": "board game"}, "checkers")
-        add_file("../resources/hockey.md", {"type": "sport"}, "hockey")
-        add_file("../resources/baseball.md", {"type": "sport"}, "baseball")
-        add_file("../resources/tennis.md", {"type": "sport"}, "tennis")
-        add_file("../resources/chess.md", {"type": "board game"}, "chess")
+        add_file("src/resources/checkers.md", {"type": "board game"}, "checkers")
+        add_file("src/resources/hockey.md", {"type": "sport"}, "hockey")
+        add_file("src/resources/baseball.md", {"type": "sport"}, "baseball")
+        add_file("src/resources/tennis.md", {"type": "sport"}, "tennis")
+        add_file("src/resources/chess.md", {"type": "board game"}, "chess")
         result = collection.query(
             query_texts="what is a home run"
         )
         self.assertIn("hockey", result.get("ids")[0])
 
+    def test_get_relevant_file(self):
+        add_file("src/resources/checkers.md", {"type": "board game"}, "checkers")
+        add_file("src/resources/hockey.md", {"type": "sport"}, "hockey")
+        add_file("src/resources/baseball.md", {"type": "sport"}, "baseball")
+        add_file("src/resources/tennis.md", {"type": "sport"}, "tennis")
+        add_file("src/resources/chess.md", {"type": "board game"}, "chess")
+        result = get_relevant_file("what is a home run")
+        self.assertIn("baseball", result.get("ids")[0])
 
 if __name__ == '__main__':
     unittest.main()

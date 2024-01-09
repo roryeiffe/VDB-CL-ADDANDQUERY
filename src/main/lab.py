@@ -44,11 +44,11 @@ should be identified as being related to the Tennis document.
 def sample():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     print(dir_path)
-    with open("../resources/baseball.md") as baseball_file:
+    with open("src/resources/baseball.md") as baseball_file:
         baseball = baseball_file.read()
-    with open("../resources/chess.md") as chess_file:
+    with open("src/resources/chess.md") as chess_file:
         chess = chess_file.read()
-    with open("../resources/tennis.md") as tennis_file:
+    with open("src/resources/tennis.md") as tennis_file:
         tennis = tennis_file.read()
     collection.add(
         documents=[baseball, chess, tennis],
@@ -73,7 +73,7 @@ The id may be used as-is, eg ids = [id].
 
 
 def add_file(relative_path, metadata, id):
-    return "todo"
+    pass
 
 
 """
@@ -82,6 +82,5 @@ string. The String is provided as a parameter to the function. It should
 return the document.
 """
 
-
 def get_relevant_file(query_string):
-    return "todo"
+    return None
