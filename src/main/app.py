@@ -19,8 +19,8 @@ def main():
           "We will add the checkers, football, hockey, basketball, and checkers files \n"
           "and then output all documents in the 'games' collection.")
     #add files
-    add_file("../resources/checkers.md", {"type": "board game"}, "checkers")
-    add_file("../resources/hockey.md", {"type": "sport"}, "hockey")
+    add_file("src/resources/checkers.md", {"type": "board game"}, "checkers")
+    add_file("src/resources/hockey.md", {"type": "sport"}, "hockey")
     #grab the chroma client and use it to display collection info
     chroma_client = chromadb.Client()
     games_collection = chroma_client.get_collection(name="games")
