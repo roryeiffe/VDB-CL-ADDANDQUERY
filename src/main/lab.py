@@ -73,7 +73,7 @@ The id may be used as-is, eg ids = [id].
 
 
 def add_file(relative_path, metadata, id):
-    pass
+    return "todo"
 
 
 """
@@ -83,4 +83,4 @@ return the document.
 """
 
 def get_relevant_file(query_string):
-    return None
+    return "todo"
